@@ -1,0 +1,2167 @@
+{
+	"info": {
+		"_postman_id": "2c7a2346-25c7-4a63-86a3-5e37696e1448",
+		"name": "HiringMine",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23356818"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"innosufiyan\",\r\n    \"lastName\": \"blah\",\r\n    \"email\": \"innosufiyan@gmail.com\",\r\n    \"password\": \"12345678\",\r\n    \"cPassword\": \"12345678\",\r\n    \"userName\": \"innosufiyannn\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/auth/signup",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"Token\", pm.response.json().token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"innosufiyan@gmail.com\",\r\n    \"password\": \"Aym12345!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/auth/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verify Email",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"otp\": \"ba35c5\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/auth/verifyEmail",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"verifyEmail"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "resendOtp",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/auth/resendOtp",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"resendOtp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "change-password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\" : \"12345678\",\r\n    \"confirmPassword\": \"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/auth/change-password",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"change-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "forgot-password-email",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"innosufiyan@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/auth/forgotPasswordRequest",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"forgotPasswordRequest"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "forgot-password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"token\": \"dfsjs4lkj43rlksgkj35kjewrs\",\r\n    \"newPassword\": \"123456789\",\r\n    \"confirmNewPassword\": \"123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/auth/forgotPassword",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"forgotPassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-userInfo",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"Token\", pm.response.json().token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/auth/get-userInfo",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"get-userInfo"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Education",
+					"item": [
+						{
+							"name": "Add Education",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{Token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"institutionName\": \"Little Folks Schools\",\r\n    \"degree\": \"Matriculation\",\r\n    \"fieldOfStudy\": \"Science\",\r\n    \"startMonth\": \"1\",\r\n    \"startYear\": \"1994\",\r\n    \"endYear\": \"2004\",\r\n    \"endMonth\": \"1\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/users/education",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"education"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Education",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{Token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"institutionName\": \"St. Paul's English High School\",\r\n    \"degree\": \"Matriculation\",\r\n    \"fieldOfStudy\": \"Computer Science\",\r\n    \"startDate\": \"2006\",\r\n    \"endDate\": \"2008\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/users/education/65f801ccd17429ba135fa177",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"education",
+										"65f801ccd17429ba135fa177"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Experience",
+					"item": [
+						{
+							"name": "Add Experience",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{Token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"companyName\": \"M3 Tech\",\r\n    \"position\": \"Software Engineer\",\r\n    \"startMonth\": \"5\",\r\n    \"startYear\": \"2022\",\r\n    \"employmentType\": \"fullTime\",\r\n    \"city\": \"Karachi\",\r\n    \"country\": \"Pakistan\",\r\n    \"currentlyWorking\": true,\r\n    \"description\": \"I work here as a React Developer\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/users/experience",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"experience"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Experience",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{Token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"companyName\": \"M3 Tech\",\r\n    \"position\": \"Software Engineer\",\r\n    \"startMonth\": \"0\",\r\n    \"startYear\": \"2022\",\r\n    \"employmentType\": \"fullTime\",\r\n    \"city\": \"Karachi\",\r\n    \"country\": \"Pakistan\",\r\n    \"currentlyWorking\": true,\r\n    \"description\": \"I work here as a Software Engineer\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/users/experience/65ff1a6e7af479cf0555af77",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"experience",
+										"65ff1a6e7af479cf0555af77"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Experience",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{Token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"companyName\": \"Maleyat\",\r\n    \"position\": \"Jawan Pakistan\",\r\n    \"startMonth\": \"0\",\r\n    \"startYear\": \"2022\",\r\n    \"endMonth\": \"0\",\r\n    \"endYear\": \"2023\",\r\n    \"description\": \"I love Ali Mughal\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/users/experience/660856e6cdcbe3f4d3c0be1a",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"experience",
+										"660856e6cdcbe3f4d3c0be1a"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Certification",
+					"item": [
+						{
+							"name": "Add Certification",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{Token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"certificationName\": \"Web n App Hybrid Mobile Development Course\",\r\n    \"issuingOrganization\": \"Saylani Mass IT Training\",\r\n    \"issueDate\": \"2023-05-03\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/users/certification",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"certification"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Certification",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{Token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"certificationName\": \"Web n App Hybrid Mobile Development Course\",\r\n    \"issuingOrganization\": \"Saylani Mass IT Training\",\r\n    \"issueDate\": \"2023-05-03\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/users/certification/65f801ccd17429ba135fa177",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"certification",
+										"65f801ccd17429ba135fa177"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Recommendation",
+					"item": [
+						{
+							"name": "Add Recommendation",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{Token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"receiver\": \"65f36728b24781940cd08b95\",\r\n    \"message\": \"A great ReactNative Developer, with a lot of Talent\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/users/recommendation",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"recommendation"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Recommendation",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{Token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"message\": \"I have met him on chai hotel, it was really glad to have chit chat with him, we are also co-founders in hiringMine, he is a great and talented developer\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/users/recommendation/65fb1c9e52938f74873652d8",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"recommendation",
+										"65fb1c9e52938f74873652d8"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Skills",
+					"item": [
+						{
+							"name": "Add Skills",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{Token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"skills\": [\"writer\"]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/users/skills",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"skills"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Remove Skills",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{Token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"skills\": [\"writer\"]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/users/skills/remove",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"skills",
+										"remove"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Appreciation",
+					"item": [
+						{
+							"name": "Add Appreciation",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{Token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/users/appreciation/66ed22a9baef4b6a08c29d50",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"appreciation",
+										"66ed22a9baef4b6a08c29d50"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Un Appreciate User",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{Token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/users/unappreciate/66ed22a9baef4b6a08c29d50",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"unappreciate",
+										"66ed22a9baef4b6a08c29d50"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Appreciators",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/users/66ed22a9baef4b6a08c29d50/appreciators",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"66ed22a9baef4b6a08c29d50",
+										"appreciators"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Appreciated By User",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/users/66ef425ca1bda0c29e509738/appreciated-users",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"66ef425ca1bda0c29e509738",
+										"appreciated-users"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/users/?pageNo=1&limit=10&experience=0-1,3-5&keyWord=jaffar",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								""
+							],
+							"query": [
+								{
+									"key": "pageNo",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "followers",
+									"value": "false",
+									"disabled": true
+								},
+								{
+									"key": "type",
+									"value": "freelance",
+									"disabled": true
+								},
+								{
+									"key": "salary",
+									"value": "400000-600000,40000-70000",
+									"disabled": true
+								},
+								{
+									"key": "openToWork",
+									"value": "true",
+									"disabled": true
+								},
+								{
+									"key": "experience",
+									"value": "0-1,3-5"
+								},
+								{
+									"key": "sortBy",
+									"value": "mostViewed",
+									"disabled": true
+								},
+								{
+									"key": "keyWord",
+									"value": "jaffar"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Referred Users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/users/referred",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"referred"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/users/66e1e857e1b1d2deea55c34e",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"66e1e857e1b1d2deea55c34e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User View",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5003/api/users/63b087b1b2002b9e8ecc9441",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5003",
+							"path": [
+								"api",
+								"users",
+								"63b087b1b2002b9e8ecc9441"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"Mohsin\",\r\n    \"lastName\": \"Shahzad\",\r\n    \"dateOfBirth\": \"2024/06/03\",\r\n    \"gender\": \"Male\",\r\n    \"country\": \"Pakistan\",\r\n    \"city\": \"Karachi\",\r\n    \"jobTitle\": \"3d Animator | Motion Graphics Artist | JavaScript Developer | ReactJS | Mern Stack\",\r\n    \"description\": \"Experienced Motion Graphic Artist and a Passionate Developer with a demonstrated history of working in various renowned t.v channels of Pakistan. I have 15 years of working experience in 2D and 3D animation using the current industry standard tools. And have been working as a Mern Stack Developer since past 1 year, I love to learn new stuff, and i like working with creative professionals. Specialties: Having Command on: * Html * Css (with different Frameworks) * JavaScript * ReactJS * ReactNative * NodeJS (ExpressJS) * MongoDB * 3d Studio Max * Adobe After Effects * Adobe Illustrator * Adobe Photoshop\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5003/api/users/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5003",
+							"path": [
+								"api",
+								"users",
+								""
+							],
+							"query": [
+								{
+									"key": "Image",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add/Update Social Links",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"platformId\" : \"65f78b37b304c5492fe958fb\",\r\n    \"url\": \"www.twitter.com/jaffu\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5003/api/users/update-social-links",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5003",
+							"path": [
+								"api",
+								"users",
+								"update-social-links"
+							],
+							"query": [
+								{
+									"key": "Image",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload Profile Pic",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "Image",
+									"type": "file",
+									"src": "/C:/Users/Chacha Tech/Downloads/358559580_1856915078039254_5559852371185783927_n.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5003/api/users/uploadProfilePic",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5003",
+							"path": [
+								"api",
+								"users",
+								"uploadProfilePic"
+							],
+							"query": [
+								{
+									"key": "Image",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload Cover Pic",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "coverImage",
+									"type": "file",
+									"src": "/C:/Users/Chacha Tech/Downloads/34303044_541752809555494_8044824785970003968_n.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5003/api/users/uploadCoverPic",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5003",
+							"path": [
+								"api",
+								"users",
+								"uploadCoverPic"
+							],
+							"query": [
+								{
+									"key": "Image",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Pic",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "coverImage",
+									"type": "file",
+									"src": "/C:/Users/Chacha Tech/Downloads/477 (3).jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5003/api/users/deletePic?cover=true",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5003",
+							"path": [
+								"api",
+								"users",
+								"deletePic"
+							],
+							"query": [
+								{
+									"key": "cover",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "JobAd",
+			"item": [
+				{
+					"name": "PostJobAd",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"companyName\": \"dumm job post\",\r\n    \"designation\": \"Sales & Marketing\",\r\n    \"desc\": \"Salary: Market Competitive  Timings: 1:00 PM to 8:00 PM Job Location: Onsite /Remote both available  Gender: Female *Hiring on urgent basis* Whatsapp your Resume\",\r\n    \"skills\": [\r\n        \"sales\",\r\n        \"marketing\"\r\n    ],\r\n    \"category\": \"6499f660d7d3bec5b121e02f\",\r\n    \"hashTags\": [\r\n        \"client\",\r\n        \"promotion\",\r\n        \"campaign\"\r\n    ],\r\n    \"applyPhone\": \"03152188443\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/jobAds",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"jobAds"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "PostJobAd",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"designation\": \"UI UX Designer\",\r\n    \"desc\": \"Need a UI UX Designer (female), Who can make deals for investors and producers, Office based job, Gulshan-e-iqbal block #14, Al Hilal society\",\r\n    \"companyName\": \"ZK Event\",\r\n    \"aboutCompany\": \"Texas Lab Technologies Ltd provides scientific, laboratory, analytical, and biotechnology equipment and solutions to quality control, testing, clinical and research laboratories, educational institutions, and food & beverages, chemical & biochemical, polymer & plastic, pharmaceutical, and petroleum industries, and enable them to advance scientific knowledge, discovery and technologies, improve manufacturing processes and protect environment and people.\",\r\n    \"featuredBenefits\": \"We provide, opd, medical, pick n drop, blah blah\",\r\n    \"skills\": [\r\n        \"technical writing\",\r\n        \"fluent in english, creative writing\",\r\n        \"content optimization\"\r\n    ],\r\n    \"category\": \"6499f691d7d3bec5b121e037\",\r\n    \"experience\": \"2 years\",\r\n    \"position\": \"senior level\",\r\n    \"noOfPositions\": 2,\r\n    \"payRangeStart\": 40000,\r\n    \"payRangeEnd\": 70000,\r\n    \"salaryCurrency\": \"dollar\",\r\n    \"hashTags\": [\r\n        \"figma\",\r\n        \"xd\",\r\n        \"design\"\r\n    ],\r\n    \"jobFeseability\": \"remote\",\r\n    \"country\": \"Pakistan\",\r\n    \"city\": \"islamabad\",\r\n    \"gender\": \"anyone\",\r\n    \"applyEmail\": \"texas@mail.com\",\r\n    \"applyPhone\": 12345678\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5003/api/jobAds",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5003",
+									"path": [
+										"api",
+										"jobAds"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "GetJobAds",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/jobAds/all",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"jobAds",
+								"all"
+							],
+							"query": [
+								{
+									"key": "filteration",
+									"value": "onsite,mid level",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "pageNo",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "views",
+									"value": "true",
+									"disabled": true
+								},
+								{
+									"key": "city",
+									"value": "Karachi",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetJobAd",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"designation\" : \"UI UX Designer\",\r\n    \"desc\": \"UI UX Designer for a full time job blah blah blah\",\r\n    \"companyName\": \"Folio 3\",\r\n    \"aboutCompany\": \"Software House blah blah blah\",\r\n    \"companyRequirements\": \"We require falana dhimkana\",\r\n    \"featuredBenefits\": \"We provide, opd, medical, pick n drop, blah blah\",\r\n    \"companySocialMedia\": \"folio@facebook.com\",\r\n    \"skills\": \"design, animation, figma, xd\",\r\n    \"expertise\": \"figma, xd, prototype, design\",\r\n    \"experience\": \"1 year\",\r\n    \"position\": \"senior level\",\r\n    \"hashtags\": [\"figma\", \"xd\", \"design\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/jobAds/6499f660d7d3bec5b121e02f",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"jobAds",
+								"6499f660d7d3bec5b121e02f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LikeJobAd",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"designation\" : \"UI UX Designer\",\r\n    \"desc\": \"UI UX Designer for a full time job blah blah blah\",\r\n    \"companyName\": \"Folio 3\",\r\n    \"aboutCompany\": \"Software House blah blah blah\",\r\n    \"companyRequirements\": \"We require falana dhimkana\",\r\n    \"featuredBenefits\": \"We provide, opd, medical, pick n drop, blah blah\",\r\n    \"companySocialMedia\": \"folio@facebook.com\",\r\n    \"skills\": \"design, animation, figma, xd\",\r\n    \"expertise\": \"figma, xd, prototype, design\",\r\n    \"experience\": \"1 year\",\r\n    \"position\": \"senior level\",\r\n    \"hashtags\": [\"figma\", \"xd\", \"design\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/jobAds",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"jobAds"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DisLikeJobAd",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"designation\" : \"UI UX Designer\",\r\n    \"desc\": \"UI UX Designer for a full time job blah blah blah\",\r\n    \"companyName\": \"Folio 3\",\r\n    \"aboutCompany\": \"Software House blah blah blah\",\r\n    \"companyRequirements\": \"We require falana dhimkana\",\r\n    \"featuredBenefits\": \"We provide, opd, medical, pick n drop, blah blah\",\r\n    \"companySocialMedia\": \"folio@facebook.com\",\r\n    \"skills\": \"design, animation, figma, xd\",\r\n    \"expertise\": \"figma, xd, prototype, design\",\r\n    \"experience\": \"1 year\",\r\n    \"position\": \"senior level\",\r\n    \"hashtags\": [\"figma\", \"xd\", \"design\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/jobAds",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"jobAds"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "JobAd Views",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"designation\" : \"UI UX Designer\",\r\n    \"desc\": \"UI UX Designer for a full time job blah blah blah\",\r\n    \"companyName\": \"Folio 3\",\r\n    \"aboutCompany\": \"Software House blah blah blah\",\r\n    \"companyRequirements\": \"We require falana dhimkana\",\r\n    \"featuredBenefits\": \"We provide, opd, medical, pick n drop, blah blah\",\r\n    \"companySocialMedia\": \"folio@facebook.com\",\r\n    \"skills\": \"design, animation, figma, xd\",\r\n    \"expertise\": \"figma, xd, prototype, design\",\r\n    \"experience\": \"1 year\",\r\n    \"position\": \"senior level\",\r\n    \"hashtags\": [\"figma\", \"xd\", \"design\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/jobAds/view/651ee4c4776d20769ab1ee00",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"jobAds",
+								"view",
+								"651ee4c4776d20769ab1ee00"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateJobAd",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"payRangeStart\": 25000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/jobAds/6537e9c6a6dc1b70182f5779",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"jobAds",
+								"6537e9c6a6dc1b70182f5779"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "UpdateJobAd",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"name": "Content-Type",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"designation\": \"UI UX Designer\",\r\n    \"desc\": \"Need a UI UX Designer (female), Who can make deals for investors and producers, Office based job, Gulshan-e-iqbal block #14, Al Hilal society\",\r\n    \"companyName\": \"ZK Event\",\r\n    \"aboutCompany\": \"Texas Lab Technologies Ltd provides scientific, laboratory, analytical, and biotechnology equipment and solutions to quality control, testing, clinical and research laboratories, educational institutions, and food & beverages, chemical & biochemical, polymer & plastic, pharmaceutical, and petroleum industries, and enable them to advance scientific knowledge, discovery and technologies, improve manufacturing processes and protect environment and people.\",\r\n    \"featuredBenefits\": \"We provide, opd, medical, pick n drop, blah blah\",\r\n    \"skills\": [\r\n        \"technical writing\",\r\n        \"fluent in english, creative writing\",\r\n        \"content optimization\"\r\n    ],\r\n    \"category\": \"6499f691d7d3bec5b121e037\",\r\n    \"experience\": \"2 years\",\r\n    \"position\": \"senior level\",\r\n    \"noOfPositions\": 2,\r\n    \"payRangeStart\": 40000,\r\n    \"payRangeEnd\": 70000,\r\n    \"salaryCurrency\": \"dollar\",\r\n    \"hashTags\": [\r\n        \"figma\",\r\n        \"xd\",\r\n        \"design\"\r\n    ],\r\n    \"jobFeseability\": \"remote\",\r\n    \"country\": \"Pakistan\",\r\n    \"city\": \"islamabad\",\r\n    \"gender\": \"anyone\",\r\n    \"applyEmail\": \"texas@mail.com\",\r\n    \"applyPhone\": 12345678\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Delete JobAd",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/jobAds/654cca48f7b1f030243e41cf",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"jobAds",
+								"654cca48f7b1f030243e41cf"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "UpdateJobAd",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"name": "Content-Type",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"designation\": \"UI UX Designer\",\r\n    \"desc\": \"Need a UI UX Designer (female), Who can make deals for investors and producers, Office based job, Gulshan-e-iqbal block #14, Al Hilal society\",\r\n    \"companyName\": \"ZK Event\",\r\n    \"aboutCompany\": \"Texas Lab Technologies Ltd provides scientific, laboratory, analytical, and biotechnology equipment and solutions to quality control, testing, clinical and research laboratories, educational institutions, and food & beverages, chemical & biochemical, polymer & plastic, pharmaceutical, and petroleum industries, and enable them to advance scientific knowledge, discovery and technologies, improve manufacturing processes and protect environment and people.\",\r\n    \"featuredBenefits\": \"We provide, opd, medical, pick n drop, blah blah\",\r\n    \"skills\": [\r\n        \"technical writing\",\r\n        \"fluent in english, creative writing\",\r\n        \"content optimization\"\r\n    ],\r\n    \"category\": \"6499f691d7d3bec5b121e037\",\r\n    \"experience\": \"2 years\",\r\n    \"position\": \"senior level\",\r\n    \"noOfPositions\": 2,\r\n    \"payRangeStart\": 40000,\r\n    \"payRangeEnd\": 70000,\r\n    \"salaryCurrency\": \"dollar\",\r\n    \"hashTags\": [\r\n        \"figma\",\r\n        \"xd\",\r\n        \"design\"\r\n    ],\r\n    \"jobFeseability\": \"remote\",\r\n    \"country\": \"Pakistan\",\r\n    \"city\": \"islamabad\",\r\n    \"gender\": \"anyone\",\r\n    \"applyEmail\": \"texas@mail.com\",\r\n    \"applyPhone\": 12345678\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "GetCategory",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/categories/all",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"categories",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Category",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Agricultural Engineering\",\r\n    \"description\": \"Explore opportunities in Agricultural Engineering where you can contribute to cutting-edge solutions for the agriculture industry. Design, prototype, and implement innovations to enhance farming efficiency, sustainability, and productivity. Join a dynamic team committed to advancing agriculture through engineering excellence.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/categories/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"categories",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Filteration",
+			"item": [
+				{
+					"name": "Get Filteration",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/filterations/all",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"filterations",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Filteration",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"filterationName\": \"Category\",\r\n    \"filterationOptions\": [\r\n        {\r\n            \"title\": \"Development\",\r\n            \"sluk\": \"6499f66cd7d3bec5b121e031-category\"\r\n        },\r\n        {\r\n            \"title\": \"Marketing & Sales\",\r\n            \"sluk\": \"6499f660d7d3bec5b121e02f-category\"\r\n        }\r\n    ],\r\n    \"fieldName\": \"category\",\r\n    \"propertyName\": \"category\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/filterations",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"filterations"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "users",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Referral",
+			"item": [
+				{
+					"name": "ValidateReferralCode",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"referralCode\": \"d5ff99b8\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/auth/validateRefferalCode",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"validateRefferalCode"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addReferralBonus",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"referralId\": \"65f36734b24781940cd08b9c\",\r\n    \"userId\": \"65f36f1794483f92eb8015dc\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/auth/awardReferralBonus",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"awardReferralBonus"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Transactions",
+			"item": [
+				{
+					"name": "GetTransactions",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "SocialLinks",
+			"item": [
+				{
+					"name": "AddSocialLinkOption",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"platform\": \"Twitter\",\r\n    \"url\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Logo_of_Twitter.svg/512px-Logo_of_Twitter.svg.png\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/socialLink",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"socialLink"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetSocialLinkOption",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/socialLink",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"socialLink"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Dropdown",
+			"item": [
+				{
+					"name": "Get Dropdown Recommendation",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/dropdown/recommendation/65f36734b24781940cd08b9c?type=recommendationRelationship&type=recommendationPosition",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"dropdown",
+								"recommendation",
+								"65f36734b24781940cd08b9c"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "recommendationRelationship"
+								},
+								{
+									"key": "type",
+									"value": "recommendationPosition"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Dropdown",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"recommendationRelationship\",\r\n    \"options\": [\r\n        {\r\n        \"value\":  \"You managed name directly\"\r\n        },\r\n        {\r\n        \"value\":  \"You reported directly to name\"\r\n        },\r\n        {\r\n        \"value\":  \"You were senior to name but didn't manage directly\"\r\n        },\r\n        {\r\n        \"value\":  \"name was senior to you but didn't manage directly\"\r\n        },\r\n        {\r\n        \"value\":  \"You worked with name in the same group\"\r\n        },\r\n        {\r\n        \"value\":  \"name worked with you in different group\"\r\n        },\r\n        {\r\n        \"value\":  \"name worked with you but at different companies\"\r\n        },\r\n        {\r\n        \"value\":  \"name was a client of yours\"\r\n        },\r\n        {\r\n        \"value\":  \"You were a client of name\"\r\n        },\r\n        {\r\n        \"value\":  \"You taught name\"\r\n        },\r\n        {\r\n        \"value\":  \"You mentored name\"\r\n        },\r\n        {\r\n        \"value\":  \"You and name studied together\"\r\n        },\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/dropdown/recommendation",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"dropdown",
+								"recommendation"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Countries",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/dropdown/countries",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"dropdown",
+								"countries"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Cities",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sponsors",
+			"item": [
+				{
+					"name": "Add View Sponsor",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Configs",
+			"item": [
+				{
+					"name": "Get Maintenance Configs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/configs/maintenance",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"configs",
+								"maintenance"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Skills",
+			"item": [
+				{
+					"name": "Get skills",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/skills?query=saylani",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"skills"
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": "saylani"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get pending skills",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/skills/pending",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"skills",
+								"pending"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
